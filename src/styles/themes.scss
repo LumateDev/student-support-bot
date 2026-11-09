@@ -1,0 +1,73 @@
+@use 'sass:map';
+
+// All theme-dependent colors are defined here, not in component styles.
+$themes: (
+  light: (
+    bg: #ffffff,
+    sidebar: #f7f9f7,
+    surface: #ffffff,
+    surface-subtle: #f5f7f3,
+    surface-hover: #eef2ee,
+    accent: #28664f,
+    accent-hover: #1c513c,
+    on-accent: #ffffff,
+    accent-soft: #e6eee7,
+    text: #253b32,
+    text-secondary: #5f6d60,
+    text-muted: #78837e,
+    border: #e3e9e0,
+    border-strong: #bacbb7,
+    error: #a34632,
+    error-bg: #fff5f1,
+    error-border: #c27462,
+    backdrop: #1c332a55,
+    shadow: #213e2910,
+    focus: #729d83,
+    focus-ring: #28664f18,
+  ),
+  dark: (
+    bg: #101114,
+    sidebar: #15161a,
+    surface: #1b1c21,
+    surface-subtle: #222329,
+    surface-hover: #2a2b32,
+    accent: #9acbb3,
+    accent-hover: #bbdfcd,
+    on-accent: #14221b,
+    accent-soft: #282e2c,
+    text: #eeeef1,
+    text-secondary: #bfc2cc,
+    text-muted: #969ba8,
+    border: #32343c,
+    border-strong: #545864,
+    error: #f0a28e,
+    error-bg: #39251f,
+    error-border: #af6c59,
+    backdrop: #00000099,
+    shadow: #00000030,
+    focus: #a3b6c4,
+    focus-ring: #85bd9c28,
+  ),
+);
+
+@mixin palette($name) {
+  color-scheme: $name;
+  @each $token, $value in map.get($themes, $name) {
+    --color-#{$token}: #{$value};
+  }
+}
+
+// По умолчанию светлая тема
+:root {
+  @include palette(light);
+}
+:root[data-theme='dark'] {
+  @include palette(dark);
+}
+
+// Before the JS module initializes, respect the OS preference too.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include palette(dark);
+  }
+}

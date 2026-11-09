@@ -1,0 +1,113 @@
+.support-page {
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+}
+
+.workspace {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 0;
+  padding: 24px 44px 16px;
+  margin: 0 auto;
+}
+
+.page-intro {
+  flex-shrink: 0;
+
+  h1 {
+    font-size: clamp(28px, 2.5vw, 36px);
+    font-weight: 550;
+    letter-spacing: -1.3px;
+    line-height: 1.2;
+
+    span {
+      color: var(--color-accent);
+    }
+  }
+
+  p {
+    margin-top: 9px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 1150px) {
+  .support-page {
+    grid-template-columns: 225px minmax(0, 1fr);
+  }
+  .main-content {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .support-page {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+  .main-content {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (max-height: 800px) and (min-width: 701px) {
+  .main-content {
+    padding-top: 16px;
+    padding-bottom: 12px;
+    gap: 12px;
+  }
+  .page-intro h1 {
+    font-size: 30px;
+  }
+  .page-intro p {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .support-page {
+    display: flex;
+    flex-direction: column;
+  }
+  .workspace {
+    flex: 1;
+  }
+  .main-content {
+    padding: 16px 16px 12px;
+    gap: 12px;
+  }
+  .page-intro h1 {
+    font-size: 28px;
+    letter-spacing: -0.9px;
+  }
+  .page-intro p {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .main-content {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+  .page-intro h1 {
+    font-size: 26px;
+  }
+}
